@@ -1,0 +1,119 @@
+<!-- templates/about.html -->
+{% extends "turff/layouts/main.html" %}
+
+{% block title %}
+About Us - MyTurf
+{% endblock title %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .section-bg {
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        transition: background 1s ease-in-out;
+    }
+    .bg-light {
+        background-color: #f8f9fa !important;
+        transition: background 1s ease-in-out;
+    }
+    .py-5 {
+        padding: 3rem 0;
+    }
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    .blockquote {
+        border-left: 5px solid #007bff;
+        padding-left: 1rem;
+    }
+    h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    p {
+        font-size: 1.125rem;
+    }
+    .gradient-bg-1 {
+        background: linear-gradient(to right, #ff7e5f, #feb47b);
+    }
+    .gradient-bg-2 {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+    }
+    .gradient-bg-3 {
+        background: linear-gradient(to right, #ff6a00, #ee0979);
+    }
+    .gradient-bg-4 {
+        background: linear-gradient(to right, #00c6ff, #0072ff);
+    }
+    .gradient-bg-5 {
+        background: linear-gradient(to right, #f7971e, #ffd200);
+    }
+</style>
+
+<section class="py-5 section-bg gradient-bg-1">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>Welcome to MyTurf, your premier destination for booking turf and sports facilities online.</p>
+        <p>At MyTurf, we strive to provide a seamless booking experience for sports enthusiasts, whether you're looking to book a soccer field, tennis court, or basketball court.</p>
+        <p>Our platform connects you with a wide range of sports facilities, allowing you to easily browse available venues, check availability, and make secure bookings from the comfort of your home.</p>
+        <p>With MyTurf, you can say goodbye to the hassle of calling multiple venues or visiting in person to book a turf. Simply browse, book, and play!</p>
+    </div>
+</section>
+
+<section class="py-5 section-bg gradient-bg-2">
+    <div class="container">
+        <h2>Our Mission</h2>
+        <p>Our mission is to revolutionize the way sports facilities are booked by providing a user-friendly platform that makes it easy for everyone to find and book the perfect venue for their sports activities.</p>
+    </div>
+</section>
+
+<section class="py-5 section-bg gradient-bg-3">
+    <div class="container">
+        <h2>Our Vision</h2>
+        <p>We envision a world where sports enthusiasts can effortlessly find and book sports facilities, enabling them to focus on what truly matters – enjoying the game and staying active.</p>
+    </div>
+</section>
+
+<section class="py-5 section-bg bg-light">
+    <div class="container">
+        <h2>Meet the Team</h2>
+        <p>Our dedicated team is passionate about sports and technology. We work tirelessly to ensure that MyTurf offers the best possible experience for our users. Get to know the people behind the platform:</p>
+        <ul>
+            <li><strong>Jane Doe</strong> - CEO & Founder</li>
+            <li><strong>John Smith</strong> - CTO</li>
+            <li><strong>Emily Johnson</strong> - Head of Marketing</li>
+            <li><strong>Michael Brown</strong> - Customer Support Lead</li>
+        </ul>
+    </div>
+</section>
+
+<section class="py-5 section-bg gradient-bg-4">
+    <div class="container">
+        <h2>User Testimonials</h2>
+        <p>Don't just take our word for it. Here's what our users have to say about MyTurf:</p>
+        <blockquote class="blockquote">
+            <p class="mb-0">"MyTurf made booking a soccer field so easy! The platform is intuitive and the booking process was seamless." - Alex P.</p>
+        </blockquote>
+        <blockquote class="blockquote">
+            <p class="mb-0">"I love how I can check availability and book a tennis court in just a few clicks. MyTurf is a game-changer!" - Samantha R.</p>
+        </blockquote>
+    </div>
+</section>
+
+<section class="py-5 section-bg bg-light">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>Have questions or need assistance? Our team is here to help! Reach out to us via email at <a href="mailto:support@myturf.com">support@myturf.com</a> or call us at (123) 456-7890.</p>
+    </div>
+</section>
+{% endblock content %}
+

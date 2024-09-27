@@ -1,0 +1,83 @@
+{% extends "turff/layouts/main.html" %}
+{% load static %}
+{% block title %}
+register | Online booking
+{% endblock title %}
+{% block content %}
+
+<section class="bg-dark py-4 my-8">
+    <div class="container">
+        <!-- Move the GIF section outside of the row -->
+        <div class="text-center">
+            <img src="{% static 'images/sports-sports-manias (1).gif' %}" alt="Sports GIF" style="width: 400px; height: 300px;">
+        </div>
+
+        <!-- Rest of your content -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <h4 >GAMES</h4>
+                <hr style="border-color: white">
+                <marquee behavior="scroll" direction="alternative" style="margin-top: 10px; font-size: 1.2em; color: white; background-color: black; padding: 10px;">
+                    ⚽ Welcome to MYTURF, book your favorite games and enjoy the turf experiences! ⚽
+                  </marquee>
+                  
+            </div>
+            {% for item in catagory %}
+            <div class="col-md-4 col-lg-3">
+                <div class="card my-3">
+                    <div class="image-container">
+                        <img src="{{item.game_image.url}}" class="card-img-top zoom" alt="Categories">
+                    </div>
+                    <a href="{% url 'games' item.name %}">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{item.name}}</h5>
+                            <p class="card-text">{{item.description}}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<style>
+    .image-container {
+        width: 100%;
+        height: 200px; /* Set a fixed height for the images */
+        overflow: hidden;
+        position: relative;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image covers the container without distortion */
+        transition: transform 0.5s ease; /* Smooth transition for the zoom effect */
+    }
+
+    .image-container img.zoom:hover {
+        transform: scale(1.2); /* Zoom in on hover */
+    }
+
+    .game-details p {
+        margin-bottom: 10px;
+    }
+
+    /* Style for the background video */
+    #bg-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+        background-size: cover;
+    }
+</style>
+
+{% endblock content %}
+
+
+
+

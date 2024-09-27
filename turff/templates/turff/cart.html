@@ -1,0 +1,48 @@
+{% extends 'turff/layouts/main.html' %}
+
+{% block title %}
+TURFBOOKING | Cart
+{% endblock title %}
+
+{% block content %}
+<section class="bg-dark py-4 my-8" style="min-height:600px; color:lightgoldenrodyellow;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="mb-3">MY BOOKINGS</h4>
+        <hr style="border-color:#b8bfc2;">
+        {% if cart_items %}
+          <div class="table-responsive">
+            <table class="table table-bordered table-dark">
+              <thead>
+                <tr>
+                  <th>Game</th>
+                  <th>Turf</th>
+                  <th>Date</th>
+                  <th>Time Slot</th>
+                  <th>Total Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in cart_items %}
+                  <tr>
+                    <td>{{ item.game_name }}</td>
+                    <td>{{ item.turf_name }}</td>
+                    <td>{{ item.booking_date }}</td>
+                    <td>{{ item.time_slot }}</td>
+                    <td>{{ item.total_cost }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <p>Total Cost: {{ total_cost }}</p>
+     
+        {% else %}
+          <p>Your cart is empty.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags, title, etc. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyTurf</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        .navbar {
+            position: relative;
+            background-color: black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand i {
+            color: #ffdd57;
+        }
+        .nav-link {
+            color: white;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        .nav-link:hover, .nav-link:focus {
+            color: red !important;
+            background-color: transparent;
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path stroke="rgba(255,255,255,1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+        }
+        .search-container {
+            position: relative;
+        }
+        .search-container input {
+            padding-right: 40px;
+        }
+        .search-container button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: #ffdd57;
+            border: none;
+            padding: 0 15px;
+            color: #182848;
+            transition: background 0.3s ease;
+        }
+        .search-container button:hover {
+            background: #ffc107;
+        }
+        #welcome-message {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #182848;
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+        #welcome-message h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        #welcome-message p {
+            font-size: 1.5em;
+            margin: 0;
+        }
+        #main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="welcome-message">
+        
+        <h1> ⚽ WELCOME TO MYTURF ⚽ </h1>
+        <p>ENJOY YOUR GAMES!</p>
+        
+    </div>
+
+    <div id="main-content">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}"><i class="fa fa-trophy"></i> MYTURF</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link" href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a>
+                        <a class="nav-link" href="{% url 'admin' %}"><i class="fa fa-user-shield"></i> Admin</a>
+                        {% if request.user.is_authenticated %}
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> {{ request.user }}</a>
+                            <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out-alt"></i> Logout</a>
+                        {% else %}
+                            <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> LOGIN</a>
+                            <a class="nav-link" href="{% url 'register' %}"><i class="fa fa-user-plus"></i> REGISTER</a>
+                        {% endif %}
+                        <a class="nav-link" href="{% url 'games' %}"><i class="fa fa-cubes"></i> GAMES</a>
+                        <a class="nav-link" href="{% url 'cart_page' %}"><i class="fa fa-shopping-cart"></i> MY BOOKINGS</a>
+                        <a class="nav-link" href="{% url 'about' %}"><i class="fa fa-info-circle"></i> ABOUT</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Your content goes here -->
+    </div>
+
+    <!-- Bootstrap JS (with Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if the welcome message should be shown (e.g., on first visit)
+            var isFirstVisit = !sessionStorage.getItem('visited');
+            
+            if (isFirstVisit) {
+                // Show the welcome message
+                setTimeout(function() {
+                    document.getElementById('welcome-message').style.opacity = '0';
+                    setTimeout(function() {
+                        document.getElementById('welcome-message').style.display = 'none';
+                        document.getElementById('main-content').style.display = 'block';
+                        setTimeout(function() {
+                            document.getElementById('main-content').style.opacity = '1';
+                        }, 10);
+                    }, 1000);
+                }, 3000);
+
+                // Set a flag in session storage to indicate the user has visited
+                sessionStorage.setItem('visited', 'true');
+            } else {
+                // If not the first visit, directly show main content
+                document.getElementById('welcome-message').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                setTimeout(function() {
+                    document.getElementById('main-content').style.opacity = '1';
+                }, 10);
+            }
+        });
+    </script>
+</body>
+</html>
